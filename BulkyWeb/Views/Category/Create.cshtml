@@ -10,10 +10,12 @@
         <div class="mb-3 row">
             <label asp-for="Name"></label>
             <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
         </div>
         <div class="mb-3 row">
             <label asp-for="DisplyOrder"></label>
             <input asp-for="DisplyOrder" class="form-control" />
+            <span asp-validation-for="DisplyOrder" class="text-danger"></span>
         </div>
 
         <div class="row">
