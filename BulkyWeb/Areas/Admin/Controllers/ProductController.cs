@@ -89,14 +89,16 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
                 if (productVM.Product.Id == 0)
                 {
                     _unitOfWork.Product.Add(productVM.Product);
+                    TempData["success"] = "Product created successfully";
                 }
                 else
                 {
                     _unitOfWork.Product.update(productVM.Product);
+                    TempData["success"] = "Product updated successfully";
                 }
                 
                 _unitOfWork.save();
-                TempData["success"] = "Product created successfully";
+                
                 return RedirectToAction("Index");
             }
             else
