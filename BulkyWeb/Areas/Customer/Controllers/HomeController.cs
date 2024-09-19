@@ -54,14 +54,16 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
                 //shopping cart exists
                 cartFromDb.Count += shoppingCart.Count;
                 _unitOfWork.ShoppingCart.update(cartFromDb);
+                TempData["success"] = "Cart updated successfully";
             }
             else
             {
                 //add cart record
                 _unitOfWork.ShoppingCart.Add(shoppingCart);
+                TempData["success"] = "Cart added successfully";
             }
 
-            
+             
             _unitOfWork.save();
 
             return RedirectToAction(nameof(Index));
