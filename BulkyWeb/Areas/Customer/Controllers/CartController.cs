@@ -88,7 +88,7 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
                 includeProperties: "Product");
 			
 
-			ShoppingCartVM.OrderHeader.ApplicationUser = _unitOfWork.ApplicationUser.Get(u => u.Id == userId);
+			ApplicationUser applicationUser = _unitOfWork.ApplicationUser.Get(u => u.Id == userId);
 
             ShoppingCartVM.OrderHeader.AplicationUserId = userId; 
             ShoppingCartVM.OrderHeader.OrderDate = DateTime.Now;
@@ -100,9 +100,9 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
 				ShoppingCartVM.OrderHeader.OrderTotal += (cart.Price * cart.Count);
 			}
 
-            if (ShoppingCartVM.OrderHeader.ApplicationUser.CompanyId.GetValueOrDefault() == 0)
+            if (applicationUser.CompanyId.GetValueOrDefault() == 0)
             {
-                //it's a regular customer account and we need to capture payment
+                //it's a regular customer 
                 ShoppingCartVM.OrderHeader.OrderStatus = SD.StatusPending;
                 ShoppingCartVM.OrderHeader.PaymentStatus = SD.PaymentStatusPending;
             }
@@ -129,9 +129,19 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
 				_unitOfWork.save();
 			}
 
-           
-			return View(ShoppingCartVM);
+			if (applicationUser.CompanyId.GetValueOrDefault() == 0)
+			{
+				//it's a regular customer account and we need to capture payment
+				//strip logic
+			}
+
+			return RedirectToAction(nameof(OderConfirmation), new { id = ShoppingCartVM.OrderHeader.Id});
 		}
+
+        public IActionResult OderConfirmation(int id)
+        {
+            return View(id);
+        }
 
 		public IActionResult Plus(int cartId) 
         {
