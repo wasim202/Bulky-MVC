@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BulkyBook.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241001013045_addSessionIDToOrderHeader")]
-    partial class addSessionIDToOrderHeader
+    [Migration("20241007025716_addSessionIdToOrderHeader")]
+    partial class addSessionIdToOrderHeader
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

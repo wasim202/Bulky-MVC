@@ -5,7 +5,7 @@
 namespace BulkyBook.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class addSessionIDToOrderHeader : Migration
+    public partial class addSessionIdToOrderHeader : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
