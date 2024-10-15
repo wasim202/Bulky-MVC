@@ -134,10 +134,10 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
 			{
                 //it's a regular customer account and we need to capture payment
                 //strip logic
-                var domain = "https://localhost:44347/";
+                var domain = "https://localhost:44347/"; 
 				var options = new SessionCreateOptions
 				{
-					SuccessUrl = domain+ $"customer/cart/OrderConfirmation?id={ShoppingCartVM.OrderHeader.Id}",
+					SuccessUrl = domain+$"customer/cart/OrderConfirmation?id={ShoppingCartVM.OrderHeader.Id}",
                     CancelUrl = domain+"customer/cart/index", 
 					LineItems = new List<SessionLineItemOptions>(),
 					Mode = "payment",
