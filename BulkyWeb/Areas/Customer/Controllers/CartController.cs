@@ -91,7 +91,7 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
 
 			ApplicationUser applicationUser = _unitOfWork.ApplicationUser.Get(u => u.Id == userId);
 
-            ShoppingCartVM.OrderHeader.AplicationUserId = userId; 
+            ShoppingCartVM.OrderHeader.ApplicationUserId = userId; 
             ShoppingCartVM.OrderHeader.OrderDate = DateTime.Now;
 
 
@@ -191,7 +191,8 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
                 }
             }
 
-            List<ShoppingCart> shoppingCarts = _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == orderHeader.AplicationUserId).ToList();
+            List<ShoppingCart> shoppingCarts = _unitOfWork.ShoppingCart
+                .GetAll(u => u.ApplicationUserId == orderHeader.ApplicationUserId).ToList();
             _unitOfWork.ShoppingCart.RemoveRange(shoppingCarts);
             _unitOfWork.save();
 
