@@ -170,7 +170,7 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
                 return new StatusCodeResult(303);
 			}
 
-			return RedirectToAction(nameof(OrderConfirmation), new { id = ShoppingCartVM.OrderHeader.Id});
+			return RedirectToAction(nameof(OrderConfirmation), new { id = ShoppingCartVM.OrderHeader.Id });
 		}
 
         public IActionResult OrderConfirmation(int id)
